@@ -18,7 +18,8 @@
 |e-mail|string|null: false, foreign_key: true|
 
 ### Association
-- has_many :groups, though: :users_groups
+- has_many :groups, though: :group_users
+- has_many :groups_users
 - has_many :messages
 ## groupsテーブル
 
@@ -28,6 +29,7 @@
 
 ### Association
 - has_many :users, though: :groups_users
+- has_many :groups_users
 - has_many :messages
 
 ## messagesテーブル
