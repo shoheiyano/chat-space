@@ -18,7 +18,7 @@
 |e-mail|string|null: false, foreign_key: true|
 
 ### Association
-- has_many :group
+- has_many :groups, though: :users_groups
 
 ## groupsテーブル
 
@@ -27,10 +27,10 @@
 |user_id|integer|null: false, foreign_key: true|
 |text|string| |
 |image|string| |
-|group_name|string|null: false, foreign_key: true|
+|name|string|null: false, foreign_key: true|
 
 ### Association
-- has_many :user
+- has_many :users, though: :groups_users
 
 ## messagesテーブル
 
