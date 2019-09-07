@@ -1,46 +1,23 @@
 .wrapper
- グループを作成しました
-.chat-side
- .side-header
-  .side-header__box
-   .side-header__box__user-name
-    taro121212
-    .side-header__box__menu
-     .side-header__box__menu__new-group
-     = fa_icon 'edit'
-     .side-header__box__menu__edit-user
-     = fa_icon 'cog'
- .groups
-  .group__group-name
-   a
-  .group__latest-message
-   画像が投稿されています
-.chat-main
- .main-header
-  .main-header__left-box
-   .main-header__left-box__current-group
-    a
-   .main-header__left-box__member-list
-    Member : 
-    .main-header__left-box__member-list__member
-    taro121212
-  .main-header__edit-btn
-   Edit
- .messages
-  .message
-   .message__upper-info
-    .message__upper-info__talker
-     taro121212
-    .message__upper-info__date
-     2019/08/09(Fri) 00:41:27
-   .message__text
-    saa
- .form
-  .new_message
-   .input-box
-    .input-box__text
-     type a message
-    .input-box__image
-     = fa_icon 'image'
-   .submit-btn
-    send
+  = render 'shared/side_bar'
+  .chat-main
+    .main-header
+      .main-header__left-box
+        .main-header__left-box__current-group
+          a
+        .main-header__left-box__member-list
+          Member : 
+        .main-header__left-box__member-list__member
+          taro121212
+      .main-header__edit-btn
+        = link_to "Edit", "edit_group_path(@group.id)", class: "btn"
+    .messages
+      = render @messages
+    .form
+      = form_for [@group, @message] do |f|
+        = f.text_field :content, class: 'form__message', placeholder: 'type a message'
+        .form__mask
+          = f.label :image, class: 'form__mask__image' do
+            = fa_icon 'picture-o', class: 'icon'
+            = f.file_field :image, class: 'hidden'
+        = f.submit 'Send', class: 'form__submit'
