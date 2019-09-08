@@ -1,5 +1,10 @@
 $(function(){
   function buildMessage(message){
+    var img = message.image ? `<img src= ${ message.image }>` : "";
+    var insertImage = '';
+    if (message.image_url) {
+      insertImage = `<img src="${message.image_url}">`;
+    }
     var html = `<div class="message">
                   <div class="message__upper-info">
                   <div class="message__upper-info__talker">
@@ -14,7 +19,7 @@ $(function(){
                   ${message.content}
                   </p>
                   <p class="lower-message__image">
-                  ${message.image}
+                  ${img}
                   </p>
                   
                   </div>
@@ -43,6 +48,7 @@ $(function(){
       $('#message_content').val('')
       $('.messages').animate({scrollTop: $(".messages")[0].scrollHeight}, 1000);
       $(".form__submit").prop("disabled", false);
+      $("form")[0].reset();
     })
     .fail(function(){
       alert('エラー');
