@@ -48,9 +48,9 @@ $(function() {
     });
 
   });
-  $(document).on('click',".user-search-add.chat-group-user__btn.chat-group-user__btn--add",function(){
-    var name = $(this).data("user-name");
-        var user_id = $(this).data("user-id");
+  $(document).on('click',".user-search-add",function(){
+    var name = $(this).data("data-user-name");
+        var user_id = $(this).data("data-user-id");
         $(this).parent().remove();
         appendMembers(name, user_id);
   })
